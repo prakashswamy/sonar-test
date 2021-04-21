@@ -1,0 +1,11 @@
+pipelines:
+  default:
+    - step:
+        name: Sonar Scanner
+        image: sonarsource/sonar-scanner-cli:4.3
+        script: 
+          - echo "Sonar scanner Started" 
+          - printenv 
+          - export SONAR_LOGIN=fefdc6be60662a1deaa77fba70244bead0df931a
+          - export SONAR_PROJECT_BASE_DIR=.
+          - /opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=bitbucket-sonar -Dsonar.sources=. -Dsonar.host.url=https://sqube.aujas.com -Dsonar.login=fefdc6be60662a1deaa77fba70244bead0df931a
